@@ -5,7 +5,7 @@ from aiogram.filters import Command
 from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton
 
 TOKEN = "8526257359:AAGBveK0Hcg8Fcfl1QHUBKQ7U1rHg7-JenA"
-GAME_URL = "https://septemminuta-collab.github.io"
+GAME_URL = " https://septemminuta-collab.github.io/crypto_game/"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
