@@ -34,5 +34,37 @@ async def main():
     init_db()
     await dp.start_polling(bot)
 
+
+from aiohttp import web
+
+# Функція для обробки запиту від гри
+async def handle_reward(request):
+    data = await request.json()
+    user_id = data.get('user_id')
+    points = data.get('points', 0)
+    
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET balance = balance + ? WHERE user_id = ?", (points, user_id))
+    conn.commit()
+    conn.close()
+    return web.json_response({"status": "ok"})
+
+# Запуск веб-сервера разом з ботом
+async def main():
+    init_db()
+    app = web.Application()
+    app.router.add_post('/reward', handle_reward)
+    
+    # Запускаємо бота
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', 10000)
+    await site.start()
+    
+    await dp.start_polling(bot)
+
+
+
 if __name__ == "__main__":
     asyncio.run(main())
