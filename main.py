@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = "ТВІЙ_ТОКЕН_З_BOTFATHER"
+TOKEN = "8526257359:AAGBveK0Hcg8Fcfl1QHUBKQ7U1rHg7-JenA"
 GAME_URL = "https://septemminuta-collab.github.io"
 
 bot = Bot(token=TOKEN)
